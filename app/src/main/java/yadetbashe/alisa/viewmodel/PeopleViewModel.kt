@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import yadetbashe.app.alisa.data.dao.PersonBalanceRow
+import yadetbashe.app.alisa.data.model.PersonBalanceRow
 import yadetbashe.app.alisa.data.model.Person
 import yadetbashe.app.alisa.data.repository.AppRepository
 import javax.inject.Inject

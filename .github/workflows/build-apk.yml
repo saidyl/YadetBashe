@@ -15,13 +15,14 @@ jobs:
           distribution: temurin
           java-version: '17'
 
+      - name: Add sdkmanager to PATH
+        run: echo "$ANDROID_HOME/cmdline-tools/latest/bin" >> $GITHUB_PATH
+
       - name: Accept Android SDK licenses
-        run: |
-          yes | sdkmanager --licenses > /dev/null || true
+        run: yes | sdkmanager --licenses > /dev/null || true
 
       - name: Install Android SDK 34
-        run: |
-          sdkmanager "platforms;android-34" "build-tools;34.0.0" > /dev/null
+        run: sdkmanager "platforms;android-34" "build-tools;34.0.0" > /dev/null
 
       - name: Generate Gradle wrapper
         run: gradle wrapper --gradle-version 8.4

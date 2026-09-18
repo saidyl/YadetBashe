@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -26,7 +28,7 @@ android {
             // در غیر این صورت، APK ریلیس با کلید دیباگ امضا می‌شود تا مستقیم قابل نصب باشد.
             val keystorePropertiesFile = rootProject.file("keystore.properties")
             if (keystorePropertiesFile.exists()) {
-                val props = java.util.Properties()
+                val props = Properties()
                 keystorePropertiesFile.inputStream().use { props.load(it) }
                 storeFile = file(props.getProperty("storeFile"))
                 storePassword = props.getProperty("storePassword")
@@ -96,7 +98,7 @@ dependencies {
     // WorkManager برای یادآوری‌ها
     implementation("androidx.work:work-runtime-ktx:2.9.0")
     implementation("androidx.hilt:hilt-work:1.1.0")
-    implementation("androidx.hilt:hilt-compiler:1.1.0")
+    kapt("androidx.hilt:hilt-compiler:1.1.0")
 
     // تاریخ و زمان
     implementation("com.jakewharton.threetenabp:threetenabp:1.4.6")

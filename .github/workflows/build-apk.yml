@@ -24,11 +24,14 @@ jobs:
       - name: Install Android SDK 34
         run: sdkmanager "platforms;android-34" "build-tools;34.0.0" > /dev/null
 
-      - name: Generate Gradle wrapper
-        run: gradle wrapper --gradle-version 8.4
+      - name: Install Gradle 8.4
+        run: |
+          curl -sL -o /tmp/gradle.zip https://services.gradle.org/distributions/gradle-8.4-bin.zip
+          unzip -q /tmp/gradle.zip -d /opt/gradle
+          echo "/opt/gradle/gradle-8.4/bin" >> $GITHUB_PATH
 
       - name: Build APKs
-        run: ./gradlew assembleDebug assembleRelease --no-daemon
+        run: gradle assembleDebug assembleRelease --no-daemon
 
       - name: Upload APKs
         uses: actions/upload-artifact@v4

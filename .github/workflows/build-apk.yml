@@ -1,13 +1,10 @@
 name: Build APK
 
-on:
-  push:
-  workflow_dispatch:
+on: [push, workflow_dispatch]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -19,22 +16,21 @@ jobs:
           java-version: '17'
 
       - name: Accept Android SDK licenses
-        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+        run: |
+          yes | sdkmanager --licenses > /dev/null || true
 
-      - name: Install Android SDK packages
-        run: "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-34" "build-tools;34.0.0" "platform-tools" > /dev/null
+      - name: Install Android SDK 34
+        run: |
+          sdkmanager "platforms;android-34" "build-tools;34.0.0" > /dev/null
 
-      - name: Generate Gradle Wrapper
+      - name: Generate Gradle wrapper
         run: gradle wrapper --gradle-version 8.4
 
-      - name: Build debug and release APKs
+      - name: Build APKs
         run: ./gradlew assembleDebug assembleRelease --no-daemon
 
       - name: Upload APKs
         uses: actions/upload-artifact@v4
         with:
           name: YadetBashe-APKs
-          path: |
-            app/build/outputs/apk/debug/*.apk
-            app/build/outputs/apk/release/*.apk
-          if-no-files-found: error
+          path: app/build/outputs/apk/

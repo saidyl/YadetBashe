@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- پالت رنگ اصلی برنامه (متریال ۳) -->
+    <color name="primary_color">#6200EE</color>
+    <color name="primary_variant_color">#3700B3</color>
+    <color name="secondary_color">#03DAC5</color>
+    <color name="secondary_variant_color">#018786</color>
+    <color name="background_color">#F5F5F5</color>
+    <color name="surface_color">#FFFFFF</color>
+    <color name="error_color">#B00020</color>
+
+    <color name="on_primary_color">#FFFFFF</color>
+    <color name="on_secondary_color">#000000</color>
+    <color name="on_background_color">#000000</color>
+    <color name="on_surface_color">#000000</color>
+
+    <!-- رنگ‌های وضعیت تراکنش -->
+    <color name="debt_color">#D32F2F</color>
+    <color name="credit_color">#388E3C</color>
+    <color name="paid_color">#388E3C</color>
+    <color name="unpaid_color">#F57C00</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

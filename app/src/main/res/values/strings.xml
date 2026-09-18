@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">یادت‌باشه</string>
+
+    <!-- برچسب‌های ناوبری -->
+    <string name="nav_transactions">تراکنش‌ها</string>
+    <string name="nav_people">افراد</string>
+    <string name="nav_reports">گزارش‌ها</string>
+    <string name="nav_settings">تنظیمات</string>
+
+    <!-- خلاصه -->
+    <string name="total_unpaid_debts">مجموع بدهی‌های پرداخت‌نشده من</string>
+    <string name="total_unpaid_credits">مجموع طلب‌های پرداخت‌نشده</string>
+    <string name="no_transactions_yet">هنوز تراکنشی ثبت نشده است</string>
+    <string name="add_first_transaction">برای شروع، اولین تراکنش را اضافه کنید</string>
+
+    <!-- برچسب‌های تراکنش -->
+    <string name="debt_label">بدهکاری</string>
+    <string name="credit_label">طلبکاری</string>
+    <string name="paid_label">پرداخت شده</string>
+    <string name="unpaid_label">پرداخت نشده</string>
+    <string name="add_transaction">افزودن تراکنش</string>
+    <string name="edit_transaction">ویرایش تراکنش</string>
+    <string name="transaction_type">نوع تراکنش</string>
+    <string name="amount">مبلغ (تومان)</string>
+    <string name="date">تاریخ</string>
+    <string name="description">توضیحات</string>
+    <string name="due_date">تاریخ سررسید (اختیاری)</string>
+    <string name="category">دسته‌بندی</string>
+    <string name="person">فرد</string>
+    <string name="save">ذخیره</string>
+    <string name="cancel">انصراف</string>
+    <string name="delete">حذف</string>
+    <string name="mark_paid">علامت‌گذاری پرداخت‌شده</string>
+    <string name="mark_unpaid">علامت‌گذاری پرداخت‌نشده</string>
+    <string name="delete_confirmation">حذف تراکنش</string>
+    <string name="delete_transaction_message">آیا از حذف این تراکنش مطمئن هستید؟</string>
+    <string name="transaction_saved">تراکنش ذخیره شد</string>
+    <string name="transaction_deleted">تراکنش حذف شد</string>
+    <string name="amount_required">مبلغ الزامی است</string>
+    <string name="person_required">انتخاب فرد الزامی است</string>
+    <string name="no_person_selected">فردی انتخاب نشده</string>
+    <string name="no_transactions_for_person">تراکنشی برای این فرد ثبت نشده است</string>
+
+    <!-- افراد -->
+    <string name="add_person">افزودن فرد</string>
+    <string name="edit_person">ویرایش فرد</string>
+    <string name="person_name">نام</string>
+    <string name="person_phone">شماره تلفن (اختیاری)</string>
+    <string name="person_note">یادداشت (اختیاری)</string>
+    <string name="person_name_required">نام الزامی است</string>
+    <string name="person_saved">اطلاعات فرد ذخیره شد</string>
+    <string name="person_deleted">فرد حذف شد</string>
+    <string name="delete_person_message">آیا از حذف این فرد مطمئن هستید؟ همه تراکنش‌های مرتبط نیز حذف می‌شوند.</string>
+    <string name="no_people_yet">هنوز فردی ثبت نشده است</string>
+    <string name="transaction_history">تاریخچه تراکنش‌ها</string>
+    <string name="net_balance">مانده حساب</string>
+
+    <!-- گزارش‌ها -->
+    <string name="monthly_report">گزارش ماهانه</string>
+    <string name="summary">خلاصه وضعیت مالی</string>
+    <string name="previous_month">ماه قبل</string>
+    <string name="next_month">ماه بعد</string>
+    <string name="month_debts_summary">بدهکاری‌های این ماه: %s تومان</string>
+    <string name="month_credits_summary">طلبکاری‌های این ماه: %s تومان</string>
+
+    <!-- یادآوری‌ها -->
+    <string name="reminders">یادآوری‌ها</string>
+    <string name="no_upcoming_reminders">یادآوری فعالی وجود ندارد</string>
+    <string name="reminders_enabled">یادآوری‌ها فعال شد</string>
+    <string name="reminders_disabled">یادآوری‌ها غیرفعال شد</string>
+    <string name="reminder_channel_name">یادآوری سررسید</string>
+    <string name="reminder_channel_description">اعلان‌های یادآوری سررسید بدهی‌ها</string>
+    <string name="reminder_title">یادآوری بدهی</string>
+    <string name="reminder_due_soon">سررسید یک بدهی نزدیک است</string>
+    <string name="reminder_overdue">یک بدهی از سررسید گذشته است</string>
+
+    <!-- پشتیبان‌گیری -->
+    <string name="backup">پشتیبان‌گیری</string>
+    <string name="backup_now">پشتیبان‌گیری الآن</string>
+    <string name="restore">بازیابی</string>
+    <string name="backup_success">پشتیبان‌گیری با موفقیت انجام شد</string>
+    <string name="backup_failed">خطا در پشتیبان‌گیری</string>
+    <string name="restore_success">بازیابی با موفقیت انجام شد</string>
+    <string name="restore_failed">خطا در بازیابی</string>
+
+    <!-- متفرقه -->
+    <string name="settings">تنظیمات</string>
+    <string name="dark_mode">حالت تاریک</string>
+    <string name="date_format">قالب تاریخ</string>
+    <string name="ok">باشه</string>
+    <string name="search">جستجو</string>
+    <string name="all">همه</string>
+    <string name="search_hint">جستجو در توضیحات…</string>
+</resources>

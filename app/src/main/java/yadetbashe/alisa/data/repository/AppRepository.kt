@@ -58,6 +58,13 @@ class AppRepository(private val db: AppDatabase) {
 
     suspend fun deletePerson(person: Person) = db.personDao().deletePerson(person)
 
+     /** پاک‌کردن همه داده‌ها (برای گزینه تنظیمات) */
+    suspend fun deleteAllData() {
+        db.reminderDao().deleteAllReminders()
+        db.transactionDao().deleteAllTransactions()
+        db.personDao().deleteAllPersons()
+    }
+
     fun getPersonBalances(): LiveData<List<PersonBalanceRow>> = db.transactionDao().getPersonBalances()
 
     // ---------- یادآوری‌ها ----------

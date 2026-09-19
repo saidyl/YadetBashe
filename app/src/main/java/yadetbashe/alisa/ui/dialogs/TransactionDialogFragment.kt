@@ -71,11 +71,15 @@ class TransactionFormViewModel @Inject constructor(
             )
             val savedId = repository.saveTransaction(updated)
 
+            val existing = repository.getReminderForTransaction(savedId)
             if (type == TransactionType.DEBT && !updated.isPaid && dueDate != null) {
-                val existing = repository.getReminderForTransaction(savedId)
+                // ساخت/به‌روزرسانی یادآوری
                 val reminder = existing?.copy(reminderDate = dueDate, isActive = true)
                     ?: Reminder(transactionId = savedId, reminderDate = dueDate)
                 repository.saveReminder(reminder)
+             } else if (existing != null && existing.isActive) {
+                // سررسید حذف شده یا پرداخت شده؛ یادآوری قدیمی غیرفعال شود
+                repository.deactivateReminder(existing.id)
             }
             onDone()
         }
@@ -95,6 +99,9 @@ class TransactionDialogFragment : DialogFragment() {
     private var selectedDueDate: Long? = null
     private var personsList: List<Person> = emptyList()
 
+    /** در حالت ویرایش: فردی که هنوز در لیست بارگیری نشده */
+    private var pendingPersonId: Long? = null
+    
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         _binding = DialogTransactionBinding.inflate(LayoutInflater.from(requireContext()))
 
@@ -114,6 +121,13 @@ class TransactionDialogFragment : DialogFragment() {
             binding.actvPerson.setAdapter(
                 ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, persons.map { it.name })
             )
+        // اگر در حالت ویرایش هستیم، نام فرد را وقتی لیست رسید نمایش بده
+            pendingPersonId?.let { pid ->
+                persons.find { it.id == pid }?.let {
+                    binding.actvPerson.setText(it.name, false)
+                    pendingPersonId = null
+                }
+            }
         }
 
         if (isEditing) {
@@ -154,8 +168,12 @@ class TransactionDialogFragment : DialogFragment() {
         selectedDueDate = t.dueDate
         binding.etDate.setText(PersianDate.formatNumeric(t.date))
         binding.etDueDate.setText(t.dueDate?.let { PersianDate.formatNumeric(it) } ?: "")
-        viewModel.persons.value?.find { it.id == t.personId }?.let {
-            binding.actvPerson.setText(it.name, false)
+         val known = viewModel.persons.value?.find { it.id == t.personId }
+        if (known != null) {
+            binding.actvPerson.setText(known.name, false)
+        } else {
+            // لیست افراد هنوز نرسیده؛ بعد از رسیدن نمایش داده می‌شود
+            pendingPersonId = t.personId
         }
     }
 

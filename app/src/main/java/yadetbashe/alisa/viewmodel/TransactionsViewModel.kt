@@ -25,7 +25,7 @@ class TransactionsViewModel @Inject constructor(
     /** فیلتر نوع: null یعنی همه */
     private val typeFilter = MediatorLiveData<TransactionType?>().apply { value = null }
 
-    /** عبارت جستجو در توضیحات */
+    /** عبارت جستجو در توضیحات یا نام فرد */
     private val searchQuery = MediatorLiveData<String>().apply { value = "" }
 
     val filteredTransactions: MediatorLiveData<List<Transaction>> = MediatorLiveData()
@@ -48,9 +48,16 @@ class TransactionsViewModel @Inject constructor(
         val list = allTransactions.value ?: emptyList()
         val type = typeFilter.value
         val q = searchQuery.value?.trim() ?: ""
+        if (q.isEmpty()) {
+            filteredTransactions.value = list.filter { type == null || it.type == type }
+            return
+        }
+        // جستجو در توضیحات و نام فرد
+        val names = persons.value.orEmpty().associateBy({ it.id }, { it.name })
         filteredTransactions.value = list.filter { t ->
             (type == null || t.type == type) &&
-                (q.isEmpty() || t.description.contains(q, ignoreCase = true))
+            (t.description.contains(q, ignoreCase = true) ||
+                    (names[t.personId]?.contains(q, ignoreCase = true) == true))    
         }
     }
 

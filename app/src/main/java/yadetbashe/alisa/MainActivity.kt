@@ -14,6 +14,8 @@ import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import yadetbashe.app.alisa.databinding.ActivityMainBinding
 import yadetbashe.app.alisa.utils.NotificationHelper
+import yadetbashe.app.alisa.utils.SettingsPrefs
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -25,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // اعمال حالت نمایش ذخیره‌شده (روشن/تاریک/سیستم) قبل از ساخت UI
+        SettingsPrefs.applyTheme(this)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

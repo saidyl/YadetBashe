@@ -69,4 +69,8 @@ interface TransactionDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(transactions: List<Transaction>)
+
+    /** پاک‌کردن همه تراکنش‌ها */
+    @Query("DELETE FROM transactions")
+    suspend fun deleteAllTransactions()
 }

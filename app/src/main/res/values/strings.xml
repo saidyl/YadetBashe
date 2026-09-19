@@ -92,4 +92,27 @@
     <string name="search">جستجو</string>
     <string name="all">همه</string>
     <string name="search_hint">جستجو در توضیحات…</string>
+    
+    <!-- گزینه‌های آیتم‌ها -->
+    <string name="edit">ویرایش</string>
+    <string name="options">گزینه‌ها</string>
+    <string name="no_people_hint">برای شروع، دکمه + را بزنید و اولین فرد را اضافه کنید</string>
+
+    <!-- تنظیمات: ظاهر و قابلیت‌های جدید -->
+    <string name="appearance">ظاهر برنامه</string>
+    <string name="theme_setting">حالت نمایش</string>
+    <string name="theme_system">هم‌رنگ سیستم</string>
+    <string name="theme_light">روشن</string>
+    <string name="theme_dark">تاریک</string>
+    <string name="reminders_hint">یک روز قبل از سررسید هر بدهی، اعلان یادآوری دریافت می‌کنید</string>
+    <string name="last_backup">آخرین پشتیبان: %s</string>
+    <string name="no_backup_yet">هنوز پشتیبانی گرفته نشده است</string>
+    <string name="share_backup">اشتراک‌گذاری فایل پشتیبان</string>
+    <string name="no_backup_file">فایل پشتیبانی وجود ندارد؛ اول پشتیبان بگیرید</string>
+    <string name="danger_zone">بخش خطرناک</string>
+    <string name="clear_all_data">پاک‌کردن همه داده‌ها</string>
+    <string name="clear_all_data_message">همه افراد، تراکنش‌ها و یادآوری‌ها برای همیشه حذف می‌شوند. این عمل قابل بازگشت نیست. مطمئن هستید؟</string>
+    <string name="clear_all_data_done">همه داده‌ها پاک شد</string>
+    <string name="about_text">مدیریت بدهکاری و طلبکاری\nنسخه ۱.۰</string>
+    <string name="restore_confirm">با بازیابی، داده‌های فایل پشتیبان به داده‌های فعلی اضافه می‌شوند. ادامه می‌دهید؟</string>
 </resources>

@@ -29,4 +29,8 @@ interface PersonDao {
     /** پشتیبان‌گیری و بازیابی */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(persons: List<Person>)
+
+    /** پاک‌کردن همه افراد */
+    @Query("DELETE FROM persons")
+    suspend fun deleteAllPersons()
 }

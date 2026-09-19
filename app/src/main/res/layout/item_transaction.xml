@@ -9,6 +9,7 @@
     android:background="?attr/selectableItemBackground">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_transaction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="12dp"

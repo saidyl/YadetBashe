@@ -36,4 +36,8 @@ interface ReminderDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(reminders: List<Reminder>)
+
+     /** پاک‌کردن همه یادآوری‌ها */
+    @Query("DELETE FROM reminders")
+    suspend fun deleteAllReminders()
 }

@@ -33,6 +33,9 @@ class PersonDetailFragment : Fragment() {
     private lateinit var transactionsAdapter: TransactionAdapter
     private lateinit var remindersAdapter: ReminderAdapter
 
+      /** آخرین لیست تراکنش‌ها (برای فیلتر یادآوری‌ها) */
+    private var lastTransactions: List<Transaction> = emptyList()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -76,6 +79,7 @@ class PersonDetailFragment : Fragment() {
         }
 
         viewModel.transactions.observe(viewLifecycleOwner) { list ->
+            lastTransactions = list
             transactionsAdapter.submitList(list)
             binding.tvNoTransactions.isVisible = list.isEmpty()
 
@@ -103,9 +107,9 @@ class PersonDetailFragment : Fragment() {
 
         viewModel.reminders.observe(viewLifecycleOwner) { reminders ->
             // فقط یادآوری‌های مربوط به تراکنش‌های همین فرد
-            val personTxIds = transactionsAdapter.currentList.map { it.id }.toSet()
+            val personTxIds = lastTransactions.map { it.id }.toSet()
             val mine = reminders.filter { it.transactionId in personTxIds }
-            remindersAdapter.transactions = transactionsAdapter.currentList.associateBy({ it.id }, { it })
+            remindersAdapter.transactions = lastTransactions.associateBy({ it.id }, { it })
             remindersAdapter.submitList(mine)
             binding.tvNoReminders.isVisible = mine.isEmpty()
             binding.rvReminders.isVisible = mine.isNotEmpty()

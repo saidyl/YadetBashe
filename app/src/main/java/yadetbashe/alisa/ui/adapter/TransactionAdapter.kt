@@ -41,7 +41,9 @@ class TransactionAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         init {
-            binding.root.setOnClickListener {
+             // شنونده‌ها روی خود کارت (نه ریشه ConstraintLayout) — چون
+            // MaterialCardView کلیک را می‌بلعد و به والد نمی‌فرستد
+            binding.cardTransaction.setOnClickListener {
                 val position = bindingAdapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     onItemClicked(getItem(position))
